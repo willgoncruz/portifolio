@@ -1,0 +1,157 @@
+package experience
+
+import (
+  "portifolio/colors"
+)
+
+css grid() {
+  gap: 48px 32px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+css experienceMargin() {
+}
+
+css noMargin() {
+  margin: 0;
+}
+
+css titleStyle() {
+  margin: 0;
+}
+
+css tagStyle() {
+  background-color: {colors.Green};
+}
+
+css periodStyle() {
+  text-align: right;
+  font-style: italic;
+}
+
+templ container() {
+  <div class={grid()}>
+    { children... }
+  </div>
+}
+
+templ period(p string) {
+  <div class={periodStyle()}>
+    {p}
+  </div>
+}
+
+templ info() {
+  <div class={experienceMargin()}>
+    { children... }
+  </div>
+}
+
+templ title(text string) {
+  <h2 class="text-2xl font-semibold">
+    {text}
+  </h2>
+}
+
+templ subtitle(text string) {
+  <h3 class="text-base font-normal">
+    {text}
+  </h3>
+}
+
+templ description() {
+  <p>
+    { children... }
+  </p>
+}
+
+templ tag(text string) {
+  <div class={"rounded-full py-2 px-5 mr-4 inline-block", tagStyle()}>
+    {text}
+  </div>
+}
+
+templ skills(list []string) {
+  <div class="mt-4">
+  for _, skill := range list {
+    @tag(skill)
+  }
+  </div>
+}
+
+var dextraSkills = []string{"Golang", "React"}
+
+templ dextra() {
+  @period("2016 - 2021")
+  @info() {
+    @title("Dextra")
+    @subtitle("Junior Engineer")
+    @description() {
+      <div>
+        <h4 class="text-xl my-2">Media Group - Digital footprint</h4>
+        <ul class="list-image-none">
+          <li>Maintenance on company legacy sites</li>
+          <li>New consumer pages on React</li>
+          <li>LGPD (GPDR) implementation on main systems in Golang</li>
+        </ul>
+
+        <h4 class="text-xl my-2">Compliance and Due Diligence</h4>
+        <ul class="list-image-none">
+          <li>Maintenance on old codebase using Java and Javascript</li>
+          <li>Google search for company due diligence, made in AWS Lambda and DynamoDB</li>
+          <li>Microservices architecture using Java</li>
+        </ul>
+      </div>
+    }
+    @skills(dextraSkills)
+  }
+}
+
+var quintoAndarSkills = []string{"Java", "React"}
+
+templ quintoAndar() {
+  @period("2022 - 2023")
+  @info() {
+    @title("QuintoAndar")
+    @subtitle("Software Engineer")
+    @description() {
+      <div>
+        <h4 class="text-xl my-2">Startup - Housing Market</h4>
+        <ul class="list-image-none">
+          <li>Worked on system for scheduling visits for potential costumers</li>
+          <li>Backstage for managing agent's calendar</li>
+        </ul>
+      </div>
+    }
+    @skills(quintoAndarSkills)
+  }
+}
+
+var globoSkills = []string{"Golang", "React"}
+
+templ globo() {
+  @period("2023 - Present")
+  @info() {
+    @title("Globo")
+    @subtitle("Senior Engineer")
+    @description() {
+      <h4 class="text-xl my-2">Media Group - Streaming</h4>
+      <ul class="list-image-none">
+        <li>Streaming app for company media distribution on Smart TVs</li>
+        <li>Devise strategies for implementation in sprawling TV market</li>
+        <li>Implementing BFFs (Backend For Frontend) for app necessity</li>
+      </ul>
+    }
+    @skills(globoSkills)
+  }
+}
+
+templ All() {
+  @container() {
+    @globo()
+    @quintoAndar()
+    @dextra()
+  }
+}
+
