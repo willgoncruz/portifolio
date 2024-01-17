@@ -5,5 +5,5 @@ run:
 	docker-compose --file docker-compose.yml up --build
 
 static:
-	go run static.go index.hmtl
+	go run static.go index.html
 
