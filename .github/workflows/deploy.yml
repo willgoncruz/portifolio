@@ -9,13 +9,14 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          ref: 'gh-pages'
       - name: Generate static 
         run: make static 
-      - name: Commit report
+      - name: Commit new page
         run: |
           git config --global user.name 'William Cruz'
           git config --global user.email 'willgoncruz@users.noreply.github.com'
-          git checkout gh-pages
           git commit -am "Generated static index.html"
           git push
