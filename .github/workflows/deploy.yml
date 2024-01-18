@@ -11,15 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'gh-pages'
+          fetch-depth: 0
       - name: Generate new page
         run: |
+          git config --global user.name 'Github Action'
+          git config --global user.email 'willgoncruz@users.noreply.github.com'
+          git checkout gh-pages
           make static
-          # git config --global user.name 'William Cruz'
-          # git config --global user.email 'willgoncruz@users.noreply.github.com'
-          # git commit -am "Generated static index.html"
-          git config user.name github-actions
-          git config user.email github-actions@github.com
           git add .
           git commit -m "Generated static index.html"
           git push
