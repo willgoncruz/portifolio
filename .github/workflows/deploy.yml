@@ -1,0 +1,21 @@
+name: Deploy Portifolio
+on: 
+  push:
+    branches:
+      - 'main'
+permissions:
+  contents: write
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate static 
+        run: make static 
+      - name: Commit report
+        run: |
+          git config --global user.name 'William Cruz'
+          git config --global user.email 'willgoncruz@users.noreply.github.com'
+          git checkout gh-pages
+          git commit -am "Generated static index.html"
+          git push
