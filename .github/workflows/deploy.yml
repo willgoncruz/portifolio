@@ -18,6 +18,7 @@ jobs:
           git config --global user.email 'willgoncruz@users.noreply.github.com'
           git checkout gh-pages
           make static
+          cat index.html
           git add .
           git commit -m "Generated static index.html"
           git push
