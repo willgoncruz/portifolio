@@ -12,10 +12,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: 'gh-pages'
-      - name: Generate static 
-        run: make static 
-      - name: Commit new page
+      - name: Generate new page
         run: |
+          make static
           git config --global user.name 'William Cruz'
           git config --global user.email 'willgoncruz@users.noreply.github.com'
           git commit -am "Generated static index.html"
