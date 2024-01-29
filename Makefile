@@ -1,6 +1,6 @@
 ### Makefile to run commands
 
-# Run backend server
+# Run dev server
 run:
 	docker-compose --file docker-compose.yml up --build
 
